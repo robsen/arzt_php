@@ -1,0 +1,35 @@
+form
+{
+	width: 400px;
+	margin: 0 auto;
+}
+
+label,
+input
+{
+	display: block;
+}
+
+label
+{
+	float: left;
+	width: 180px;
+}
+
+input
+{
+	width: 200px;
+	margin: 0 0 5px 0;
+}
+
+#submit-patient
+{
+	margin: 10px auto 0 auto;
+	padding: 5px;
+}
+
+#patient-search-form,
+#patient-search-form input
+{
+	width: auto;
+}
