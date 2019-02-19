@@ -7,6 +7,6 @@
 	}
 	else
 	{
-		header("location:${_SERVER['DOCUMENT_ROOT']}/index.php");
+		header("location:/index.php");
 		exit(0);
 	}
