@@ -23,6 +23,8 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `arzt` /*!40100 DEFAULT CHARACTER SET u
 
 USE `arzt`;
 
+grant all privileges on arzt.* to 'arzt'@'localhost' identified by '1234';
+
 --
 -- Table structure for table `current_treatment`
 --
