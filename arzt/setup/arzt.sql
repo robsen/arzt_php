@@ -105,7 +105,7 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
-INSERT INTO `patient` VALUES (1,'Robert','Jaskowski',1234,'2019-02-08 12:20:40',1),(2,'Camila','Hinterhint',5678,'2019-02-11 12:14:28',1),(3,'Herman','Werauchimmer',9012,'2019-02-11 12:28:56',1),(4,'Julia','Kirschbaum',3456,'2019-02-11 12:29:21',1);
+INSERT INTO `patient` VALUES (1,'Robert','Jaskowski',1234,'2019-02-08 12:20:40',1),(2,'Cornelia','Hirtreiter',7815,'2019-02-11 12:14:28',1),(3,'Helmut','Hirscher',4526,'2019-02-11 12:28:56',1),(4,'Julia','Kirschbaum',8532,'2019-02-11 12:29:21',1);
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +206,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_patient_by_id`(in patient_id int unsigned)
 begin
-select patient.firstname, patient.lastname, patient.svnr from patient where id = patient_id;
+select patient.id, patient.firstname, patient.lastname, patient.svnr from patient where id = patient_id;
 end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -242,4 +242,18 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+create procedure delete_patient_by_id (patient_id int unsigned)
+begin
+	delete from patient where id = patient_id;
+end
+
+create procedure modify_patient_with_id (patient_id int unsigned, firstname varchar(50), lastname varchar(50), svnr smallint unsigned)
+begin
+	update patient set firstname = firstname, lastname = lastname, svnr = svnr where id = patient_id;
+end
+
+create procedure get_patients_none_treatment ()
+begin
+	select patient.lastname, patient.firstname, patient.svnr, patient.id from patient where patient.id not in (select patient_id from current_treatment) order by patient.lastname;
+end
 -- Dump completed on 2019-02-18  9:12:34
