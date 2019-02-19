@@ -30,6 +30,11 @@ nav a
 	color: #fff;
 }
 
+nav a
+{
+	padding: 15px;
+}
+
 #main-menu
 {
 	margin: 0;
@@ -39,7 +44,7 @@ nav a
 {
 	display: inline;
 	margin: 0;
-	padding: 0 25px 0 3px;
+	padding: 15px;
 	height: 100%;
 }
 
