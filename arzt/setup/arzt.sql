@@ -242,18 +242,22 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+DELIMITER ;;
 create procedure delete_patient_by_id (patient_id int unsigned)
 begin
 	delete from patient where id = patient_id;
-end
+end ;;
 
 create procedure modify_patient_with_id (patient_id int unsigned, firstname varchar(50), lastname varchar(50), svnr smallint unsigned)
 begin
 	update patient set firstname = firstname, lastname = lastname, svnr = svnr where id = patient_id;
-end
+end ;;
 
 create procedure get_patients_none_treatment ()
 begin
 	select patient.lastname, patient.firstname, patient.svnr, patient.id from patient where patient.id not in (select patient_id from current_treatment) order by patient.lastname;
-end
+end ;;
+
+DELIMITER ;
+
 -- Dump completed on 2019-02-18  9:12:34
